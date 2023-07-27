@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+  <name><![CDATA[Custom Template by layout]]></name>
+  <code><![CDATA[custom_template_by_layout]]></code>
+	<version><![CDATA[1.0]]></version>
+	<author><![CDATA[REDS PRAI]]></author>
+	<link><![CDATA[https://www.agenciaprai.com/]]></link>
+	
+	<file path="catalog/controller/product/product.php">
+		<operation>
+			<search><![CDATA[$this->response->setOutput($this->load->view('product/product', $data));]]></search>
+			<add position="replace"><![CDATA[
+				// Layout defined
+				$layoutid = $this->model_catalog_product->getProductLayoutId($this->request->get['product_id']);
+				if($layoutid == 14){
+					$this->response->setOutput($this->load->view('product/product_design', $data));
+				}else{
+					$this->response->setOutput($this->load->view('product/product', $data));
+				}
+			]]></add>
+		</operation>
+	</file>
+	
+</modification>
